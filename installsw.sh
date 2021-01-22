@@ -15,7 +15,7 @@ apt update
 echo "[7] Fish installation:"
 apt install -y fish
 chsh -s `which fish`
-cp fish.config ~/.config/fish
+cp config.fish ~/.config/fish
 echo "[8] Network-manager installation:"
 apt install -y network-manager
 echo "[9] Kde software installation:"
