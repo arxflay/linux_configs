@@ -39,6 +39,13 @@ cp -f linux-firmware/rtw88 /lib/firmware
 echo "[13]AMDGPU si/cik support:"
 cp -f configs/amdgpu.conf /etc/modprobe.d
 cp -f configs/radeon.conf /etc/modprobe.d
+echo "[14] Libreoffice installation:"
+wget https://download.documentfoundation.org/libreoffice/stable/7.0.4/deb/x86_64/LibreOffice_7.0.4_Linux_x86-64_deb.tar.gz
+wget http://download.documentfoundation.org/libreoffice/stable/7.0.4/deb/x86_64/LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz
+tar -zvxf LibreOffice_7.0.4_Linux_x86-64_deb.tar.gz
+tar -zvxf LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz
+dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb/DEBS/*.deb
+dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru/DEBS/*.deb
 echo "[14] Optional software:"
 apt install steam krita
 echo "Run this command to set fish as default shell: chsh -s \`which fish\`"
