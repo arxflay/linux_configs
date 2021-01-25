@@ -1,23 +1,19 @@
-# 
-
-# deb cdrom:[Debian GNU/Linux 10.7.0 _Buster_ - Official amd64 NETINST 20201205-11:16]/ buster main
-
-#deb cdrom:[Debian GNU/Linux 10.7.0 _Buster_ - Official amd64 NETINST 20201205-11:16]/ buster main
-
 deb http://deb.debian.org/debian/ buster main non-free contrib
 deb-src http://deb.debian.org/debian/ buster main non-free contrib
 
 deb http://security.debian.org/debian-security buster/updates main
 deb-src http://security.debian.org/debian-security buster/updates main
-#external
-deb http://deb.debian.org/debian buster-backports main
-deb https://dl.winehq.org/wine-builds/debian/ buster main
+
 # buster-updates, previously known as 'volatile'
 deb http://deb.debian.org/debian/ buster-updates main non-free contrib
 deb-src http://deb.debian.org/debian/ buster-updates main non-free contrib
 
-# This system was installed using small removable media
-# (e.g. netinst, live or single CD). The matching "deb cdrom"
-# entries were disabled at the end of the installation process.
-# For information about how to configure apt package sources,
-# see the sources.list(5) manual.
+
+# debian-backports repository
+deb http://deb.debian.org/debian buster-backports main
+# wine repository
+deb https://dl.winehq.org/wine-builds/debian/ buster main
+# vscode repository
+deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
+# netcore repository
+deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main
