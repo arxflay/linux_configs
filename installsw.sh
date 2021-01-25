@@ -18,7 +18,7 @@ apt update
 echo "[7] Fish installation:"
 apt install -y fish
 chsh -s `which fish`
-mkdir -p .config/fish
+mkdir -p ~/.config/fish
 cp configs/config.fish ~/.config/fish
 echo "[8] Kde software installation:"
 apt install -y kcolorchooser ktorrent kde-plasma-desktop plasma-widgets-addons ark gwenview kde-runtime-data kde-config-tablet plasma-nm qt5-default okular
@@ -32,13 +32,13 @@ cp Iosevka\ Nerd\ Font\ Complete.ttf /usr/share/fonts/
 echo "[12] Firmware installation:"
 apt install -y firmware-linux r8168-dkms
 git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-cp -f linux-firmware/amdgpu /lib/firmware
-cp -f linux-firmware/amd /lib/firmware
-cp -f linux-firmware/amd-ucode /lib/firmware
-cp -f linux-firmware/rtl_bt /lib/firmware
-cp -f linux-firmware/rtl_nic /lib/firmware
-cp -f linux-firmware/rtlwifi /lib/firmware
-cp -f linux-firmware/rtw88 /lib/firmware
+cp -rf linux-firmware/amdgpu /lib/firmware
+cp -rf linux-firmware/amd /lib/firmware
+cp -rf linux-firmware/amd-ucode /lib/firmware
+cp -rf linux-firmware/rtl_bt /lib/firmware
+cp -rf linux-firmware/rtl_nic /lib/firmware
+cp -rf linux-firmware/rtlwifi /lib/firmware
+cp -rf linux-firmware/rtw88 /lib/firmware
 echo "[13] AMDGPU si/cik support:"
 cp -f configs/amdgpu.conf /etc/modprobe.d
 cp -f configs/radeon.conf /etc/modprobe.d
@@ -50,7 +50,11 @@ tar -zvxf LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz
 dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb/DEBS/*.deb
 dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru/DEBS/*.deb
 echo "[15] Optional software:"
-apt install steam krita
+apt install steam krita firefox-esr
 echo "[16] Optinoal dev software:"
 apt install code dotnet-sdk-5.0
+echo "[17] Final steps"
+cp -f configs/NetworkManager.conf /etc/NetworkManager
+rm -rf LibreOffice_7.0.4.2_Linux_x86-64_deb linux-firmware LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru
+rm -f LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz LibreOffice_7.0.4_Linux_x86-64_deb.tar.gz packages.microsoft.gpg winehq.key Iosevka\ Nerd\ Font\ Complete.ttf
 echo "Run this command to set fish as default shell: chsh -s \`which fish\`"
