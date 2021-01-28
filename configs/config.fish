@@ -1,3 +1,8 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+
+function fish_greeting
+end
+
 function fish_prompt
     echo (set_color red)'['\
 (set_color bryellow)(whoami)\

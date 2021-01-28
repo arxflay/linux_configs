@@ -1,8 +1,8 @@
 echo "[1] Updating repository:"
 apt update
 echo "[2] Unix utils installation:"
-apt install -y wget curl g++ gcc cmake make mc dkms python3-pip
-echo "[3] Repoistory configuration:"
+apt install -y wget curl g++ gcc cmake make mc dkms python3-pip clang
+echo "[3] Reposistory configuration:"
 chown whoami sources.list
 cp -f configs/sources.list /etc/apt
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -21,7 +21,7 @@ chsh -s `which fish`
 mkdir -p ~/.config/fish
 cp configs/config.fish ~/.config/fish
 echo "[8] Kde software installation:"
-apt install -y kcolorchooser ktorrent kde-plasma-desktop plasma-widgets-addons ark gwenview kde-runtime-data kde-config-tablet plasma-nm qt5-default okular
+apt install -y kcolorchooser ktorrent kde-plasma-desktop plasma-widgets-addons ark gwenview kde-runtime-data kde-config-tablet plasma-nm plasma-discover-backend-flatpak qt5-default okular
 echo "[9] Mesa and xorg installation:"
 apt install -y mesa-vulkan-drivers:i386 libvulkan1:i386 vulkan-tools vulkan-utils vulkan-validationlayers mesa-vulkan-drivers libvulkan1 xserver-xorg-input-all
 echo "[10] Wine installation:"
@@ -50,11 +50,27 @@ tar -zvxf LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz
 dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb/DEBS/*.deb
 dpkg -i LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru/DEBS/*.deb
 echo "[15] Optional software:"
-apt install steam krita firefox-esr
-echo "[16] Optinoal dev software:"
+apt install steam krita firefox-esr doublecmd-gtk gnome-keyring
+echo "[16] Optional dev software:"
 apt install code dotnet-sdk-5.0
-echo "[17] Final steps"
+echo "[17] Dwm"
+apt install -y mate-utils pavucontrol fonts-noto-color-emoji ttf-ancient-fonts compton compton-conf libxinerama-dev
+apt build-dep -y dwm
+git clone https://github.com/arxflay/dwm.git
+make -C dwm install
+git clone git://git.suckless.org/dmenu
+make -C dmenu install
+cp configs/dwm.desktop /usr/share/xsessions
+mkdir -p /usr/share/dwm_modules
+cp dwm_scripts/dwm-bar /usr/share/dwm_modules
+cp dwm_scripts/pui695.jpg $HOME
+cp dwm_scripts/switch_klayout.sh $HOME
+mkdir -p $HOME/.dwm
+cp dwm_scripts/autostart.sh $HOME/.dwm
+echo "[18] Final steps"
+apt install -y clang-8 llvm-8 ttf-ancient-fonts connman alsa-utils
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 cp -f configs/NetworkManager.conf /etc/NetworkManager
 rm -rf LibreOffice_7.0.4.2_Linux_x86-64_deb linux-firmware LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru
-rm -f LibreOffice_7.0.4_Linux_x86-64_deb_langpack_ru.tar.gz LibreOffice_7.0.4_Linux_x86-64_deb.tar.gz packages.microsoft.gpg winehq.key Iosevka\ Nerd\ Font\ Complete.ttf
+rm -f *.tar.gz packages.microsoft.gpg winehq.key Iosevka\ Nerd\ Font\ Complete.ttf
 echo "Run this command to set fish as default shell: chsh -s \`which fish\`"
