@@ -15,11 +15,9 @@ echo "[5] Adding i386 architecture:"
 dpkg --add-architecture i386
 echo "[6] Updating repository:"
 apt update
-echo "[7] Fish installation:"
-apt install -y fish
-chsh -s `which fish`
-mkdir -p ~/.config/fish
-cp configs/config.fish ~/.config/fish
+echo "[7] zsh installation:"
+apt install -y zsh
+chsh -s `/usr/bin/zsh`
 echo "[8] Kde software installation:"
 apt install -y kcolorchooser ktorrent kde-plasma-desktop plasma-widgets-addons ark gwenview kde-runtime-data kde-config-tablet plasma-nm plasma-discover-backend-flatpak qt5-default okular
 echo "[9] Mesa and xorg installation:"
@@ -73,4 +71,4 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 cp -f configs/NetworkManager.conf /etc/NetworkManager
 rm -rf LibreOffice_7.0.4.2_Linux_x86-64_deb linux-firmware LibreOffice_7.0.4.2_Linux_x86-64_deb_langpack_ru
 rm -f *.tar.gz packages.microsoft.gpg winehq.key Iosevka\ Nerd\ Font\ Complete.ttf
-echo "Run this command to set fish as default shell: chsh -s \`which fish\`"
+echo "Run this command to set fish as default shell: chsh -s \'/usr/bin/zsh\'"
