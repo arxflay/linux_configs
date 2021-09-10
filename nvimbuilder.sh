@@ -1,6 +1,6 @@
 git clone --depth=1 https://github.com/neovim/neovim.git
 pip3 install meson ninja
-apt install -y clangd-8 pkgconf gettext libtool libtool-bin gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev libutf8proc-dev
+apt install -y clangd pkgconf gettext libtool libtool-bin gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev libutf8proc-dev
 luarocks build mpack
 luarocks build lpeg
 luarocks build inspect

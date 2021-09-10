@@ -23,11 +23,11 @@ export SEP2=" "
 
 # Import the modules
 #. "$DIR/bar-functions/dwm_battery.sh"
-. "$DIR/bar-functions/dwm_alsa.sh"
+. "$DIR/bar-functions/dwm_pulse.sh"
 #. "$DIR/bar-functions/dwm_weather.sh"
 . "$DIR/bar-functions/dwm_keyboard.sh"
 . "$DIR/bar-functions/dwm_date.sh"
-. "$DIR/bar-functions/dwm_connman.sh"
+. "$DIR/bar-functions/dwm_networkmanager.sh"
 
 # Update dwm status bar every second
 while true
@@ -36,8 +36,8 @@ do
     # Append results of each func one by one to a string
     dispstr=""
 #    dispstr="$dispstr$(dwm_battery)"
-    dispstr="$dispstr$(dwm_connman)"
-    dispstr="$dispstr$(dwm_alsa)"
+    dispstr="$dispstr$(dwm_networkmanager)"
+    dispstr="$dispstr$(dwm_pulse)"
 #    dispstr="$dispstr$(dwm_weather)"
     dispstr="$dispstr$(dwm_keyboard)"
     dispstr="$dispstr$(dwm_date)"
